@@ -1,0 +1,40 @@
+
+<div class="row mt-5">
+    <div class="col-md-12">
+        <!--Card-->
+        <mdb-card *ngIf ="articulo" cascade="true" narrower="true" class="mt-5">
+            <div class="view gradient-card-header blue darken-2">
+                <h4 class="h4-responsive text-white">Historial de precios </h4>
+            </div>
+            <!--Card content-->
+            <mdb-card-body>
+                <div style="display: block">
+                    <canvas mdbChart [chartType]="chart1Type" [datasets]="chartDatasets" [labels]="chartLabels"
+                            [colors]="chartColors" [options]="chartOptions"
+                            [legend]="true">
+                    </canvas>
+                </div>
+            </mdb-card-body>
+            <mdb-card-body>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Precio</th>
+                        <th>Fecha</th>
+                        
+                    </tr>
+                    </thead>
+                    <tbody >
+                        <tr *ngFor="let a of articulo.hist_precio">
+                            <td>$ {{a.precio}}</td>
+                            <td>{{a.created_date | date: 'dd/MM/yyyy'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mdb-card-body>
+            <!--/.Card content-->
+        </mdb-card>
+        <!--/.Card-->
+    </div>
+</div>
+

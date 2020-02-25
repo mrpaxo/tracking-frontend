@@ -1,0 +1,57 @@
+<div class="row mt-5">
+    <div class="col-md-12">
+        <!--Card-->
+        <mdb-card cascade="true" narrower="true" class="mt-5">
+            <!--Card image-->
+            <div class="view gradient-card-header blue darken-2">
+                <h4 class="h4-responsive text-white">Mis Url </h4>
+            </div>
+            <!--/Card image-->
+            <!--Card content-->
+            <mdb-card-body>
+                <div align = 'center'>
+                <button type="button" class="btn btn-success" [routerLink]="['/url/create/']" >
+                    <span class="icon text-white-50">
+                        <i class="fa fa-plus-circle"></i>
+                    </span>
+                    Nuevo
+                 </button>
+                </div>
+                <br>
+                <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                    <thead>
+                    <tr>
+                        <th>Articulo</th>
+                        <th>Url</th>
+                        <th>Fecha Creacion</th>
+                        <th>Accion</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of articulos">
+                            <td>{{a.nombre}}</td>
+                            <td>{{a.url.url}}</td>
+                            <td>{{a.created_date | date: 'dd/MM/yyyy'}}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger" [routerLink]="['/url/update/', a.id]">
+                                    <span class="icon text-white-50">
+                                        <i class="fa fa-trash"></i>
+                                    </span>
+                                 </button>
+                                 
+                                 <button type="button" class="btn btn-primary" [routerLink]="['/url/details/', a.id]">
+                                    <span class="icon text-white-50">
+                                        <i class="fa fa-info-circle"></i>
+                                    </span>
+                                 </button>
+                                <!--button type="button" (click)="crudService.delete(product.id)">Remove</!--button-->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mdb-card-body>
+            <!--/.Card content-->
+        </mdb-card>
+        <!--/.Card-->
+    </div>
+</div>
